@@ -1,7 +1,8 @@
 import { Service } from 'typedi';
 import axios, { AxiosResponse } from 'axios';
 import { from, map, Observable } from 'rxjs';
-import { GraphqlQuery, GraphqlQueryResponse } from '../../models/graphql.model';
+import { GraphqlQuery } from '../../models/graphql.model';
+import { GraphqlQueryResponse } from '../../../../shared/models/spotify.model';
 
 @Service()
 export default class FetchService {

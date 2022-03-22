@@ -13,6 +13,7 @@ export default async (ctx: Context) => {
       headers: {
         Authorization: `Basic ${Buffer.from(`${import.meta.env.VITE_SPOTIFY_CLIENT_ID}:${import.meta.env.VITE_SPOTIFY_CLIENT_SECRET}`).toString('base64')}`,
       },
+      // eslint-disable-next-line comma-dangle
     }
   );
 

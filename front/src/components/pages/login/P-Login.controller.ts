@@ -1,6 +1,7 @@
 import Container from 'typedi';
 import { SpotifyAuthUrlQuery } from '../../../graphql';
-import { GraphqlQuery, GraphqlQueryResponse } from '../../../models/graphql.model';
+import { GraphqlQuery } from '../../../models/graphql.model';
+import { GraphqlQueryResponse } from '../../../../../shared/models/spotify.model';
 import FetchService from '../../../services/fetch/fetch.service';
 import LocalizationService from '../../../services/localization/localization.service';
 

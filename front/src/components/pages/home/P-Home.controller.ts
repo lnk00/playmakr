@@ -1,6 +1,7 @@
 import { map, Observable } from 'rxjs';
 import { Container } from 'typedi';
-import { GraphqlQuery, GraphqlQueryResponse, Top } from '../../../models/graphql.model';
+import { GraphqlQuery } from '../../../models/graphql.model';
+import { GraphqlQueryResponse, Top } from '../../../../../shared/models/spotify.model';
 import FetchService from '../../../services/fetch/fetch.service';
 import { SpotifyTopItems } from '../../../graphql';
 

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Artist } from '../../models/artist.model';
+import { Artist } from '../../../../shared/models/spotify.model';
 
 export default async (args: any): Promise<Artist[]> => {
   const res = await axios.get(`${import.meta.env.VITE_SPOTIFY_BASE_URL}me/top/artists`, { headers: { Authorization: `Bearer ${args.token}` } });
