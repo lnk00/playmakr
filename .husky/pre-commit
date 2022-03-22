@@ -1,0 +1,7 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+cd front
+pnpm lint
+cd ../api
+pnpm lint

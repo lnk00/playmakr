@@ -13,6 +13,7 @@ specifiers:
   eslint-config-airbnb-base: ^15.0.0
   eslint-plugin-import: ^2.25.2
   graphql: ^16.3.0
+  husky: ^7.0.4
   koa: ^2.13.4
   koa-graphql: ^0.12.0
   koa-router: ^10.1.1
@@ -38,6 +39,7 @@ devDependencies:
   eslint: 8.11.0
   eslint-config-airbnb-base: 15.0.0_fe22d862ffeecaee86c93a006d59e41e
   eslint-plugin-import: 2.25.4_eslint@8.11.0
+  husky: 7.0.4
   typescript: 4.6.2
   vite: 2.8.6
   vite-plugin-node: 0.0.18_@swc+core@1.2.159+vite@2.8.6
@@ -1419,6 +1421,12 @@ packages:
       statuses: 2.0.1
       toidentifier: 1.0.1
     dev: false
+
+  /husky/7.0.4:
+    resolution: {integrity: sha512-vbaCKN2QLtP/vD4yvs6iz6hBEo6wkSzs8HpRah1Z6aGmF2KW5PdYuAd7uX5a+OyBZHBhd+TFLqgjUgytQr4RvQ==}
+    engines: {node: '>=12'}
+    hasBin: true
+    dev: true
 
   /iconv-lite/0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
