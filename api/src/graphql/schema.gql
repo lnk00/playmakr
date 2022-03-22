@@ -1,0 +1,32 @@
+type Track {
+  rank: Int
+  name: String
+  image: String
+  artist: String
+  id: String
+}
+
+type Artist {
+  rank: Int
+  name: String
+  image: String
+  followers: Int
+}
+
+type Top {
+  tracks(token: String!): [Track]
+  artists(token: String!): [Artist]
+}
+
+type Spotify {
+  authUrl: String
+  top: Top
+}
+
+type Query {
+  spotify: Spotify
+}
+
+schema {
+  query: Query
+}

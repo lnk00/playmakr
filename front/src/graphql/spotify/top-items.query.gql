@@ -1,0 +1,19 @@
+query TopItems($token: String!) {
+  spotify {
+    top {
+      tracks(token: $token) {
+        rank
+        name
+        image
+        artist
+        id
+      }
+      artists(token: $token) {
+        rank
+        name
+        image
+        followers
+      }
+    }
+  }
+}
