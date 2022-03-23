@@ -27,7 +27,9 @@ export default class FetchService {
   }
 
   static error401Handler(res: AxiosResponse) {
-    const found401Error = res.data.errors.find((element: any) => JSON.parse(element.message).statusCode === 401);
-    if (found401Error) console.log('ERROR: ', found401Error);
+    if (res.data.errors) {
+      const found401Error = res.data.errors.find((element: any) => JSON.parse(element.message).statusCode === 401);
+      if (found401Error) console.log('ERROR: ', found401Error);
+    }
   }
 }
