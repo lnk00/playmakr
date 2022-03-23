@@ -1,6 +1,7 @@
 import { Service } from 'typedi';
 import axios, { AxiosResponse } from 'axios';
-import { from, map, Observable } from 'rxjs';
+// eslint-disable-next-line object-curly-newline
+import { from, map, Observable, tap } from 'rxjs';
 import { GraphqlQuery } from '../../models/graphql.model';
 import { GraphqlQueryResponse } from '../../../../shared/models/spotify.model';
 
@@ -20,6 +21,13 @@ export default class FetchService {
   }
 
   query(query: GraphqlQuery): Observable<GraphqlQueryResponse> {
-    return from(axios.post(this.apiGraphql, query)).pipe(map((val: any) => val.data.data));
+    return from(axios.post(this.apiGraphql, query))
+      .pipe(tap(FetchService.error401Handler.bind(this)))
+      .pipe(map((val: any) => val.data.data));
+  }
+
+  static error401Handler(res: AxiosResponse) {
+    const found401Error = res.data.errors.find((element: any) => JSON.parse(element.message).statusCode === 401);
+    if (found401Error) console.log('ERROR: ', found401Error);
   }
 }
