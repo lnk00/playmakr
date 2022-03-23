@@ -4,6 +4,7 @@ import { GraphqlQuery } from '../../../models/graphql.model';
 import { GraphqlQueryResponse, Top } from '../../../../../shared/models/spotify.model';
 import FetchService from '../../../services/fetch/fetch.service';
 import { SpotifyTopItems } from '../../../graphql';
+import SessionService from '../../../services/session/session.service';
 
 export default class HomeController {
   fetchService: FetchService;
@@ -11,10 +12,12 @@ export default class HomeController {
   token?: string;
 
   constructor() {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.has('token')) this.token = urlParams.get('token')!;
-
     this.fetchService = Container.get(FetchService);
+
+    const sessionService = Container.get(SessionService);
+    sessionService.getToken().subscribe((token: string | undefined) => {
+      this.token = token;
+    });
   }
 
   getTopItems(): Observable<Top> {
