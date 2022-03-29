@@ -3,7 +3,7 @@
 .top-container {
   width: calc(100% - 3rem);
   padding: 1.5rem;
-  border: 2px solid $lighter-grey;
+  border: 1px solid $lighter-grey;
   border-radius: 0.25rem;
   margin-bottom: 1.5rem;
 
@@ -33,7 +33,7 @@
 
     .item {
       padding: 1rem;
-      border: 2px solid $lighter-grey;
+      border: 1px solid $lighter-grey;
       border-radius: 0.25rem;
       width: 15%;
 
@@ -44,10 +44,32 @@
         overflow: hidden;
         border-radius: 0.25rem;
         margin-bottom: 1rem;
+        position: relative;
 
         img {
           width: 100%;
           border-radius: 0.25rem;
+        }
+
+        .play-btn {
+          position: absolute;
+          bottom: 0.5rem;
+          right: 0.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 2.5rem;
+          height: 2.5rem;
+          background-color: $green-spotify;
+          border-radius: 0.25rem;
+          color: white;
+          font-size: 1rem;
+          margin-top: 1rem;
+          cursor: pointer;
+
+          i {
+            margin-top: 4px;
+          }
         }
       }
 

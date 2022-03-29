@@ -25,6 +25,9 @@ dashboardController.getTopItems().subscribe((data) => {
         <div v-for="artist in artists" :key="artist.rank" class="item">
           <div class="img-container">
             <img :src="artist.image" alt="item image" />
+            <div class="play-btn">
+              <i class="im im-play"></i>
+            </div>
           </div>
           <div class="item-title">{{ artist.name }}</div>
           <div class="item-subtitle">{{ artist.followers }} Followers</div>
@@ -40,6 +43,9 @@ dashboardController.getTopItems().subscribe((data) => {
         <div v-for="track in tracks" :key="track.rank" class="item">
           <div class="img-container">
             <img :src="track.image" alt="item image" />
+            <div class="play-btn">
+              <i class="im im-play"></i>
+            </div>
           </div>
           <div class="item-title">{{ track.name }}</div>
           <div class="item-subtitle">{{ track.artist }}</div>
