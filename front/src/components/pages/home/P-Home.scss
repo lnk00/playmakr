@@ -29,6 +29,12 @@
         }
       }
     }
+
+    .content {
+      height: calc(100% - 6rem);
+      padding: 0 1.5rem;
+      overflow-y: scroll;
+    }
   }
 
   .right-split {
