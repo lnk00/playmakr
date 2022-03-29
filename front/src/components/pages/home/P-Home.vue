@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { Ref, ref } from 'vue';
-import { Track, Artist } from '../../../models/graphql.model';
+import { useRouter } from 'vue-router';
+import { Track, Artist } from '../../../../../shared/models/spotify.model';
 import HomeController from './P-Home.controller';
 
 const tracks: Ref<Track[] | undefined> = ref([]);
 const artists: Ref<Artist[] | undefined> = ref([]);
 
-const homeController = new HomeController();
+const homeController = new HomeController(useRouter());
 homeController.getTopItems().subscribe((data) => {
   tracks.value = data.tracks;
   artists.value = data.artists;
