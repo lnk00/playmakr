@@ -2,6 +2,7 @@ import { App } from 'vue';
 import * as VueRouter from 'vue-router';
 import Home from '../components/pages/home/P-Home.vue';
 import Login from '../components/pages/login/P-Login.vue';
+import Dashboard from '../components/pages/home/dashboard/P-Dashboard.vue';
 import isTokenAlreadySetGuard from '../guards/is-token-already-set.guard';
 import setTokenGuard from '../guards/set-token.guard';
 
@@ -20,6 +21,12 @@ const createRouter = (app: App): VueRouter.Router =>
         path: '/home',
         component: Home,
         beforeEnter: setTokenGuard.bind(this),
+        children: [
+          {
+            path: 'dashboard',
+            component: Dashboard,
+          },
+        ],
       },
       {
         path: '/:pathMatch(.*)*',

@@ -1,37 +1,29 @@
-import { Router } from 'vue-router';
-import { map, Observable } from 'rxjs';
-import { Container } from 'typedi';
-import { GraphqlQuery, GraphqlQueryResponseWrapper } from '../../../models/graphql.model';
-import { Top } from '../../../../../shared/models/spotify.model';
-import FetchService from '../../../services/fetch/fetch.service';
-import { SpotifyTopItems } from '../../../graphql';
-import SessionService from '../../../services/session/session.service';
+import { ref, Ref } from 'vue';
 
 export default class HomeController {
-  fetchService: FetchService;
+  panel: Ref<HTMLElement | null> = ref<HTMLElement | null>(null);
 
-  router: Router;
+  panelBtn: Ref<HTMLElement | null> = ref<HTMLElement | null>(null);
 
-  token?: string;
-
-  constructor(router: Router) {
-    this.fetchService = Container.get(FetchService);
-    this.router = router;
-
-    const sessionService = Container.get(SessionService);
-    sessionService.getToken().subscribe((token: string | undefined) => {
-      this.token = token;
-    });
+  setPanelRef(panel: HTMLElement | null): void {
+    this.panel.value = panel;
   }
 
-  getTopItems(): Observable<Top> {
-    const query: GraphqlQuery = { query: SpotifyTopItems, variables: { token: this.token } };
-    return this.fetchService.query(query).pipe(
-      map((res: GraphqlQueryResponseWrapper) => {
-        if (res.error) this.router.push('/login');
-        return res.data.spotify.top;
-        // eslint-disable-next-line comma-dangle
-      })
-    );
+  setPanelBtnRef(panelBtn: HTMLElement | null): void {
+    this.panelBtn.value = panelBtn;
+  }
+
+  onPanelClick(): void {
+    if (this.panel.value && this.panelBtn.value) {
+      if (this.panel.value.classList.contains('closed')) {
+        this.panel.value.classList.remove('closed');
+        this.panelBtn.value.classList.remove('im-angle-left');
+        this.panelBtn.value.classList.add('im-x-mark');
+      } else {
+        this.panel.value.classList.add('closed');
+        this.panelBtn.value.classList.remove('im-x-mark');
+        this.panelBtn.value.classList.add('im-angle-left');
+      }
+    }
   }
 }

@@ -17,5 +17,5 @@ export default async (ctx: Context) => {
     }
   );
 
-  ctx.redirect(`${import.meta.env.VITE_APP_BASE_URL}/home?token=${encodeURIComponent(tokenResult.data.access_token)}`);
+  ctx.redirect(`${import.meta.env.VITE_APP_BASE_URL}/home/dashboard?token=${encodeURIComponent(tokenResult.data.access_token)}`);
 };

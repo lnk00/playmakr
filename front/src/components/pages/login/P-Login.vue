@@ -27,6 +27,6 @@ const controller = new LoginController();
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import './P-login.scss';
 </style>

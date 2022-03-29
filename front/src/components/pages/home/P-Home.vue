@@ -1,31 +1,29 @@
 <script setup lang="ts">
-import { Ref, ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { Track, Artist } from '../../../../../shared/models/spotify.model';
 import HomeController from './P-Home.controller';
 
-const tracks: Ref<Track[] | undefined> = ref([]);
-const artists: Ref<Artist[] | undefined> = ref([]);
-
-const homeController = new HomeController(useRouter());
-homeController.getTopItems().subscribe((data) => {
-  tracks.value = data.tracks;
-  artists.value = data.artists;
-});
+const homeController = new HomeController();
 </script>
 
 <template>
-  <div>
-    <div>HOME</div>
-    <div v-for="track in tracks" :key="track.rank">
-      {{ track.name }}
+  <div class="split-container">
+    <div class="left-split">
+      <div class="header">
+        <div class="icon-container">
+          <img src="../../../assets/images/logo.png" alt="logo" />
+        </div>
+      </div>
+      <div class="content">
+        <router-view></router-view>
+      </div>
     </div>
-    <div v-for="artist in artists" :key="artist.rank">
-      {{ artist.name }}
+    <div class="right-split" :ref="(el) => {homeController.setPanelRef(el as HTMLElement)}">
+      <div class="split-btn" v-on:click="homeController.onPanelClick">
+        <i class="im im-x-mark" :ref="(el) => homeController.setPanelBtnRef(el as HTMLElement)"></i>
+      </div>
     </div>
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import './P-Home.scss';
 </style>
