@@ -12,14 +12,21 @@ dashboardController.getTopItems().subscribe((data) => {
   tracks.value = data.tracks.slice(0, 5);
   artists.value = data.artists.slice(0, 5);
 });
+
+const topArtistsElem: Ref<HTMLElement | undefined> = ref<HTMLElement>();
+const topTracksElem: Ref<HTMLElement | undefined> = ref<HTMLElement>();
+
+const onMoreArtistsClick = () => {
+  topTracksElem.value?.classList.add('hidden');
+};
 </script>
 
 <template>
   <div>
-    <div class="top-container">
+    <div class="top-container" ref="topArtistsElem">
       <div class="header">
         <div class="title">Your Top Artists</div>
-        <div class="more">See more</div>
+        <div class="more" v-on:click="onMoreArtistsClick">See more</div>
       </div>
       <div class="items-container">
         <div v-for="artist in artists" :key="artist.rank" class="item">
@@ -34,7 +41,7 @@ dashboardController.getTopItems().subscribe((data) => {
         </div>
       </div>
     </div>
-    <div class="top-container">
+    <div class="top-container" ref="topTracksElem">
       <div class="header">
         <div class="title">Your Top Tracks</div>
         <div class="more">See more</div>
