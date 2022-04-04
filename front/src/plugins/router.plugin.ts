@@ -20,6 +20,7 @@ const createRouter = (app: App): VueRouter.Router =>
       {
         path: '/home',
         component: Home,
+        redirect: '/home/dashboard',
         beforeEnter: setTokenGuard.bind(this),
         children: [
           {

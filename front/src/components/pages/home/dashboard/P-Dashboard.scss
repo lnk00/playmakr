@@ -46,8 +46,37 @@
 
         &:hover {
           .img-container {
-            img {
-              width: 150%;
+            transform: scale(0.95);
+          }
+        }
+
+        .item-infos {
+          display: flex;
+          align-items: flex-start;
+
+          .item-rank {
+            margin-right: 0.5rem;
+            font-weight: 800;
+          }
+
+          .item-titles {
+            .item-title {
+              font-weight: 700;
+              white-space: nowrap;
+              overflow-x: hidden;
+              text-overflow: ellipsis;
+              margin-bottom: 0.25rem;
+              overflow: hidden;
+            }
+
+            .item-subtitle {
+              font-size: 0.9rem;
+              color: $dark-grey;
+              font-weight: 600;
+              white-space: nowrap;
+              overflow-x: hidden;
+              text-overflow: ellipsis;
+              overflow: hidden;
             }
           }
         }
@@ -63,11 +92,11 @@
           border-radius: 0.25rem;
           margin-bottom: 1rem;
           position: relative;
+          transition: all 300ms ease-in-out;
 
           img {
             width: 100%;
             border-radius: 0.25rem;
-            transition: all 300ms ease-in-out;
           }
 
           .play-btn {
@@ -90,23 +119,6 @@
               margin-top: 4px;
             }
           }
-        }
-
-        .item-title {
-          font-weight: 700;
-          white-space: nowrap;
-          overflow-x: hidden;
-          text-overflow: ellipsis;
-          margin-bottom: 0.25rem;
-        }
-
-        .item-subtitle {
-          font-size: 0.9rem;
-          color: $dark-grey;
-          font-weight: 600;
-          white-space: nowrap;
-          overflow-x: hidden;
-          text-overflow: ellipsis;
         }
       }
     }

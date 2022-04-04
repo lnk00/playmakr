@@ -2,6 +2,7 @@
 import { Ref, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { Track, Artist } from '../../../../../../shared/models/spotify.model';
+import UtilsService from '../../../../services/utils/utils.service';
 import DashboardController from './P-Dashboard.controller';
 
 const artists: Ref<Artist[] | undefined> = ref([]);
@@ -67,8 +68,13 @@ const onMoreTracksClick = () => {
                 <i class="im im-play"></i>
               </div>
             </div>
-            <div class="item-title">{{ artist.name }}</div>
-            <div class="item-subtitle">{{ artist.followers }} Followers</div>
+            <div class="item-infos">
+              <div class="item-rank">{{ artist.rank }}.</div>
+              <div class="item-titles">
+                <div class="item-title">{{ artist.name }}</div>
+                <div class="item-subtitle">{{ UtilsService.formatNumber(artist.followers) }} Followers</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -85,8 +91,13 @@ const onMoreTracksClick = () => {
                 <i class="im im-play"></i>
               </div>
             </div>
-            <div class="item-title">{{ track.name }}</div>
-            <div class="item-subtitle">{{ track.artist }}</div>
+            <div class="item-infos">
+              <div class="item-rank">{{ track.rank }}.</div>
+              <div class="item-titles">
+                <div class="item-title">{{ track.name }}</div>
+                <div class="item-subtitle">{{ track.artist }}</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
